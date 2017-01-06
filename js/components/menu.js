@@ -1,6 +1,6 @@
+//import React from '../react/react'
+//import ReactDOM from '../react/react-dom'
 (function () {
-    import React from './react/react'
-    import ReactDOM from './react/react-dom'
     class Menu extends React.Component {
         render() {
             return (
