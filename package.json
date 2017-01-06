@@ -5,7 +5,7 @@
   "description": "A simple, flexible screengrab tool.",
   "main": "js/main.js",
   "scripts": {
-    "start": "electron .",
+    "start": "electron ."
   },
   "author": "Victor Akinyemi",
   "license": "MIT"
