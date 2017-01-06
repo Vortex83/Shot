@@ -1,9 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Menu from './components/menu'
+import AppMenu from './components/appmenu'
 module.exports = function (renderer) {
+    let activeMenuItem = "view-screenshot"
+    function menuCallback(activeItem) {
+        activeMenuItem = activeItem
+        alert(activeItem)
+    }
     ReactDOM.render(
-        <Menu />,
+        <AppMenu callback={menuCallback} />,
         document.getElementById('menu')
     )
 };

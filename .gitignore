@@ -1,5 +1,5 @@
 node_modules/**
 lib/**
-npm_debug.log
+npm-debug.log
 semantic/**
 !semantic/dist/**

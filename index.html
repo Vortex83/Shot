@@ -10,11 +10,13 @@
         <div id="content">
         </div>
         <script src="node_modules/jquery/dist/jquery.js"></script>
-        <script src="semantic/dist/semantic.js"></script>
+        <!--<script src="semantic/dist/semantic.js"></script>-->
         <script>
+            //$("document").ready(function () {
             // Grab the Renderer API
             let rendererAPI = require('./lib/renderer')
             require('./lib/app')(rendererAPI);
+            //})
         </script>
 
     </body>
