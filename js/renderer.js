@@ -1,9 +1,9 @@
 (function () {
     let renderer = {}
     renderer.sceenShot = function (options) {
-       if (options.fullScreen) {
-           
-       }
+        if(!options) {
+            
+        }
     }
 
     module.exports = renderer; 
