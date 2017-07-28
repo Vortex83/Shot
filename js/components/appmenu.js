@@ -1,7 +1,41 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Menu } from 'semantic-ui-react'
-export default class AppMenu extends React.Component {
+import React, { Component } from 'react';
+import { NavPane, NavPaneItem, Text } from 'react-desktop';
+
+export default class extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            selected: 'view-screenshot',
+            callback: props.callback
+        };
+    }
+
+    render() {
+        return (
+            <NavPane openLength={200} push color={this.props.color} theme={this.props.theme}>
+                {this.renderItem('view-screenshot', 'Screenshot', '<ViewScreenshot />')}
+                {this.renderItem('view-screenrecord', 'Screenrecord', '<ViewScreenrecord />')}
+                {this.renderItem('view-about', 'About', '<ViewAbout />')}
+            </NavPane>
+        );
+    }
+
+    renderItem(id, title, content) {
+        return (
+            <NavPaneItem
+                title={title}
+                theme='light'
+                background='#ffffff'
+                selected={this.state.selected === id}
+                onSelect={() => this.setState({ selected: id }) && this.props.callback()}
+                push
+            >
+                {content}
+            </NavPaneItem>
+        );
+    }
+}
+/*export default class AppMenu extends React.Component {
     constructor(props) {
         // call the parent constructor and initialize object state
         super(props);
@@ -51,4 +85,4 @@ export default class AppMenu extends React.Component {
             </Menu>
         )
     }
-}
+}*/
