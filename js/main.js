@@ -1,7 +1,7 @@
 const electron = require('electron');
 const ipc = require('electron').ipcMain;
 const dialog = require('electron').dialog;
-const Process = require('process')
+const Process = require('process');
 
 // Module to control application life.
 const app = electron.app;
@@ -35,13 +35,6 @@ function createWindow () {
   });
 }
 
-ipc.on('browse-directory', function (event) {
-  dialog.showOpenDialog({
-    properties: ['openDirectory']
-  }, function (files) {
-    if (files) event.sender.send('selected-directory', files); // TODO: Error checking
-  });
-});
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
