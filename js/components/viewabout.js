@@ -5,9 +5,21 @@ export default class extends Component {
 	render() {
 		return (
 			<View layout="vertical">
-				<Text>Shot is a simple, flexible screengrab tool with screenshot and screenrecording features.</Text>
-				<Text><b>Made with &lt;3</b></Text>
+				<View margin="0 0 20px 0">
+					<Text>Shot is a simple, flexible screengrab tool with screenshot and screenrecording features.</Text>
+				</View>
+				<View>
+					<Text><b>Made with &lt;3 by Vortex</b></Text>
+				</View>
 			</View>
+			
 		);
+		/*style={{
+					positon: 'absolute',
+					top: '25%',
+					left: '0px',
+					width: '100%',
+					textAlign: 'center'
+				}}*/
 	}
 }

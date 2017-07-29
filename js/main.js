@@ -1,6 +1,7 @@
 const electron = require('electron');
 const ipc = require('electron').ipcMain;
 const dialog = require('electron').dialog;
+const Process = require('process')
 
 // Module to control application life.
 const app = electron.app;
@@ -13,7 +14,7 @@ let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({frame: false});
+  mainWindow = new BrowserWindow({minWidth: 800, minHeight: 600, frame: false});
   mainWindow.setMenu(null);
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/../index.html`);
@@ -21,7 +22,7 @@ function createWindow () {
 
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  if (Process.env.SHOT_DBG) mainWindow.webContents.openDevTools();
   mainWindow.on('ready-to-show', function () {
     mainWindow.show();
   });

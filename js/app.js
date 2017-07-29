@@ -40,7 +40,8 @@ module.exports = function (renderer) {
         	<AppMenu
         		color='#cc7f29'
         		theme='light'
-        		callback={menuCallback} />
+        		callback={menuCallback}
+        		renderer={renderer} />
         </Window>,
         document.getElementById('container')
         //
