@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { NavPane, NavPaneItem, Text } from 'react-desktop';
-
+import { NavPane, NavPaneItem, Text, View } from 'react-desktop/windows';
+import ViewAbout from './viewabout';
 export default class extends Component {
     constructor(props) {
         super(props);
@@ -15,7 +15,7 @@ export default class extends Component {
             <NavPane openLength={200} push color={this.props.color} theme={this.props.theme}>
                 {this.renderItem('view-screenshot', 'Screenshot', '<ViewScreenshot />')}
                 {this.renderItem('view-screenrecord', 'Screenrecord', '<ViewScreenrecord />')}
-                {this.renderItem('view-about', 'About', '<ViewAbout />')}
+                {this.renderItem('view-about', 'About', (<ViewAbout />))}
             </NavPane>
         );
     }
@@ -27,8 +27,12 @@ export default class extends Component {
                 theme='light'
                 background='#ffffff'
                 selected={this.state.selected === id}
-                onSelect={() => this.setState({ selected: id }) && this.props.callback()}
+                onSelect={() => (this.setState({ selected: id }) || this.props.callback(id))} // too lazy to make a proper function
                 push
+                style={{
+                    'max-width': '600px',
+                    margin: 'auto'
+                }}
             >
                 {content}
             </NavPaneItem>

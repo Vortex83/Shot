@@ -2,17 +2,20 @@
 <html>
     <head>
         <title>Shot</title>
+        <style>
+            body {
+                padding: 0px;
+                margin: 0px;
+            }
+        </style>
     </head>
     <body>
-        <div id="menu">
+        <div id="container">
         </div>
-        <div id="content">
-        </div>
-        <!--<script src="semantic/dist/semantic.js"></script>-->
         <script>
             //$("document").ready(function () {
             // Grab the Renderer API
-            let rendererAPI = require('./lib/renderer')
+            let rendererAPI = require('./lib/renderer');
             require('./lib/app')(rendererAPI);
             //})
         </script>
