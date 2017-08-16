@@ -2,6 +2,8 @@ const electron = require('electron');
 const ipc = require('electron').ipcMain;
 const dialog = require('electron').dialog;
 const Process = require('process');
+const { default: installExtension, REACT_DEVELOPER_TOOLS } = require('electron-devtools-installer');
+
 
 // Module to control application life.
 const app = electron.app;
@@ -22,7 +24,14 @@ function createWindow () {
 
 
   // Open the DevTools.
-  if (Process.env.SHOT_DBG) mainWindow.webContents.openDevTools();
+  if (Process.env.SHOT_DBG) {
+    installExtension(REACT_DEVELOPER_TOOLS)
+      .then((name) => {
+        console.log(`Added Extension:  ${name}`)
+        mainWindow.webContents.openDevTools()
+      })
+      .catch((err) => console.log('An error occurred: ', err));
+    }
   mainWindow.on('ready-to-show', function () {
     mainWindow.show();
   });

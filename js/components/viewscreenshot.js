@@ -23,7 +23,7 @@ export default class extends Component {
 				return (
 					<View layout="vertical">
 						<img src={this.state.dataURI} style={{ maxWidth: '100%', maxHeight: '100%', margin: 'auto'}} />
-						<View layoout="horizontal" horizontalAlignment="right">
+						<View layout="horizontal" horizontalAlignment="right">
 						</View>
 					</View>
 				);
@@ -59,38 +59,22 @@ export default class extends Component {
 		this.updatePath({target: {value: files[0] || this.state.path}}); // keeps previous path if user doesn't chosse a file
 	}
 	gatSauces(error, sources) {
-		this.setState((prevState) => ({
-			view: prevState.view,
-			path: prevState.path,
-			sources: sources,
-			sourceid: prevState.sourceid, 
-			blob: prevState.blob,
-			dataURI: prevState.dataURI
-		}));
+		this.setState({
+			sources: sources
+		});
 	}
 	sourceChange(e) {
 		e.persist();
-		this.setState((prevState) => ({
-			view: prevState.view,
-			path: prevState.path,
-			sources: prevState.sources,
+		this.setState({
 			sourceid: e.target.id, 
-			blob: prevState.blob,
-			dataURI: prevState.dataURI
-		}));
+		});
 		this.state.sources.forEach((source) => ((source.id == e.target.id) ? document.getElementById("currentSource").innerHTML = this.makeShort(source.name) : null));
 	}
 	updatePath(e) {
 		e.persist();
-		this.setState((prevState) => ({
-			view: prevState.view,
+		this.setState({
 			path: e.target.value,
-			sources: prevState.sources,
-			sourceid: prevState.sourceid,
-			sourcename: prevState.sourcename,
-			blob: prevState.blob,
-			dataURI: prevState.dataURI
-		}));
+		});
 	}
 	takeShot() {
 		function iAmCallback(error, data) {
@@ -102,14 +86,11 @@ export default class extends Component {
 				alert("Error: " + data);
 				return;
 			}
-			this.setState(prevState => ({
-				view: 'previewshot',
-				path: prevState.path,
-				sources: prevState.sources,
-				sourceid: prevState.sourceid, 
+			this.setState({
+				view: 'previewshot', 
 				blob: data.blob,
 				dataURI: data.dataURI
-			}));
+			});
 			this.forceUpdate();
 		}
 		this.props.renderer.screenShot({
